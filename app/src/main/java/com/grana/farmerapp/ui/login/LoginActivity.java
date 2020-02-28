@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private EditText usernameEditText;
     private EditText passwordEditText;
+    private final LoginActivity loginActivity = this;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                     showLoginFailed(loginResult.getError());
                 }
                 if (loginResult.getSuccess() != null) {
-                    startActivity(new Intent(HomeActivity.class));
+                    startActivity(new Intent(loginActivity, HomeActivity.class));
                 }
                 setResult(Activity.RESULT_OK);
 
