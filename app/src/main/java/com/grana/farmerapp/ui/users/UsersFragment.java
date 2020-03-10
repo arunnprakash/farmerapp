@@ -16,6 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.grana.farmerapp.R;
+import com.kirana.avatar.authorization.dto.UserDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersFragment extends Fragment {
 
@@ -39,18 +43,13 @@ public class UsersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // this is data fro recycler view
-        ItemData itemsData[] = {
-                new ItemData("Indigo", R.drawable.circle),
-                new ItemData("Red", R.drawable.color_ic_launcher),
-                new ItemData("Blue", R.drawable.indigo),
-                new ItemData("Green", R.drawable.circle),
-                new ItemData("Amber", R.drawable.color_ic_launcher),
-                new ItemData("Deep Orange", R.drawable.indigo)
-        };
 
+        List<UserDTO> users = new ArrayList<>();
+        users.add(UserDTO.builder().firstName("Arun").lastName("123544").build());
+        users.add(UserDTO.builder().firstName("Prakash").lastName("123344").build());
 
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(itemsData);
+        UserRecycleViewAdapter mAdapter = new UserRecycleViewAdapter(users);
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
         // 5. set item animator to DefaultAnimator
